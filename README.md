@@ -4,6 +4,8 @@
 
 ## Not checking properly code against eosio.token on transfer
 
+Vulnerable code was first posted [on stack exchange](https://eosio.stackexchange.com/questions/421/how-to-do-something-when-your-contract-is-an-action-notification-recipient-like) and used by several dapps which got hacked. 
+
 ```cpp
 
 // extend from EOSIO_ABI
@@ -26,4 +28,10 @@ extern "C" {
 }
 
 EOSIO_ABI_EX(eosio::charity, (hi)(transfer))
+``` 
+
+An improved version was later added.
+
+```cpp
+if( ((code == self && action != N(transfer)) || (code == N(eosio.token) && action == N(transfer)) || action == N(onerror)) ) { 
 ``` 
