@@ -4,6 +4,8 @@
 
 ## Not checking properly code against eosio.token on transfer
 
+```cpp
+
 // extend from EOSIO_ABI
 #define EOSIO_ABI_EX( TYPE, MEMBERS )
 extern "C" {
@@ -24,3 +26,4 @@ extern "C" {
 }
 
 EOSIO_ABI_EX(eosio::charity, (hi)(transfer))
+``` 
